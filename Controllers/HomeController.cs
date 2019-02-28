@@ -20,13 +20,17 @@ namespace Blogs.Controllers
         {
             if (ModelState.IsValid)
             {
-                repository.AddBlog(model);
-                return RedirectToAction("Index");
+                if (repository.Blogs.Any(b => b.Name == model.Name))
+                {
+                    ModelState.AddModelError("", "Name must be unique");
+                }
+                else
+                {
+                    repository.AddBlog(model);
+                    return RedirectToAction("Index");
+                }
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
     }
 }
