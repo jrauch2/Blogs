@@ -18,8 +18,15 @@ namespace Blogs.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddBlog(Blog model)
         {
-            repository.AddBlog(model);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                repository.AddBlog(model);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
