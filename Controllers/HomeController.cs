@@ -14,6 +14,12 @@ namespace Blogs.Controllers
 
         public IActionResult AddBlog() => View();
 
+        public IActionResult BlogDetail(int id) => View(new PostViewModel
+        {
+            blog = repository.Blogs.FirstOrDefault(b => b.BlogId == id),
+            Posts = repository.Posts.Where(p => p.BlogId == id)
+        });
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddBlog(Blog model)
