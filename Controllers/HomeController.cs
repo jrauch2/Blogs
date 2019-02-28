@@ -11,5 +11,7 @@ namespace Blogs.Controllers
         public HomeController(IBloggingRepository repo) => repository = repo;
 
         public IActionResult Index() => View(repository.Blogs.OrderBy(b => b.Name));
+
+        public IActionResult AddBlog() => View();
     }
 }
