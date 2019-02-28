@@ -24,6 +24,10 @@ namespace Blogs
         {
             // this is where we use the config info for our connection string
             services.AddDbContext<BloggingContext>(options => options.UseSqlServer(Configuration["Data:Blog:ConnectionString"]));
+            // since we created an interface for our repository, we must map the 
+            // interface to the concrete class to ensure that when an IBloggingRepository
+            // is requested, a new instance of EFBloggingRepository is returned
+            services.AddTransient<IBloggingRepository, EFBloggingRepository>();
             services.AddMvc();
         }
 
