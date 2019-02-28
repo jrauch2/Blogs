@@ -64,5 +64,13 @@ namespace Blogs.Controllers
             @ViewBag.BlogId = id;
             return View();
         }
+
+        public IActionResult DeletePost(int id)
+        {
+            Post post = repository.Posts.FirstOrDefault(p => p.PostId == id);
+            int BlogId = post.BlogId;
+            repository.DeletePost(post);
+            return RedirectToAction("BlogDetail", new { id = BlogId });
+        }
     }
 }

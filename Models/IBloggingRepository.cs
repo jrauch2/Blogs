@@ -11,7 +11,8 @@ namespace Blogs.Models
         void AddBlog(Blog blog);
         void DeleteBlog(Blog blog);
         void AddPost(Post post);
+        void DeletePost(Post post);
         // TODO: UpdateBlog
-        // TODO: UpdatePost, DeletePost
+        // TODO: UpdatePost
     }
 }
