@@ -27,5 +27,11 @@ namespace Blogs.Models
             context.Remove(blog);
             context.SaveChanges();
         }
+
+        public void AddPost(Post post)
+        {
+            context.Add(post);
+            context.SaveChanges();
+        }
     }
 }

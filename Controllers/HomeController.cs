@@ -44,5 +44,25 @@ namespace Blogs.Controllers
             repository.DeleteBlog(repository.Blogs.FirstOrDefault(b => b.BlogId == id));
             return RedirectToAction("Index");
         }
+
+        public IActionResult AddPost(int id)
+        {
+            ViewBag.BlogId = id;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddPost(int id, Post post)
+        {
+            post.BlogId = id;
+            if (ModelState.IsValid)
+            {
+                repository.AddPost(post);
+                return RedirectToAction("BlogDetail", new { id = id });
+            }
+            @ViewBag.BlogId = id;
+            return View();
+        }
     }
 }
