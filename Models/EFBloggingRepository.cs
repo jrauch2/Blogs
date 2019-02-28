@@ -21,5 +21,11 @@ namespace Blogs.Models
             context.Add(blog);
             context.SaveChanges();
         }
+
+        public void DeleteBlog(Blog blog)
+        {
+            context.Remove(blog);
+            context.SaveChanges();
+        }
     }
 }
