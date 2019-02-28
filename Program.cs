@@ -19,6 +19,9 @@ namespace Blogs
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseDefaultServiceProvider(options => options.ValidateScopes = false);
+        // TODO: Remove the above line after data has been seeded
+        // for more info on scoped services, see https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2
     }
 }
