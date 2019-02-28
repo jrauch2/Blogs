@@ -13,5 +13,13 @@ namespace Blogs.Controllers
         public IActionResult Index() => View(repository.Blogs.OrderBy(b => b.Name));
 
         public IActionResult AddBlog() => View();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddBlog(Blog model)
+        {
+            repository.AddBlog(model);
+            return RedirectToAction("Index");
+        }
     }
 }

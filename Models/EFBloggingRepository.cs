@@ -16,5 +16,10 @@ namespace Blogs.Models
         public IQueryable<Blog> Blogs => context.Blogs;
         public IQueryable<Post> Posts => context.Posts;
 
+        public void AddBlog(Blog blog)
+        {
+            context.Add(blog);
+            context.SaveChanges();
+        }
     }
 }
