@@ -8,7 +8,11 @@ namespace Blogs.Models
         IQueryable<Blog> Blogs { get; }
         IQueryable<Post> Posts { get; }
 
-        // TODO: AddBlog, UpdateBlog, DeleteBlog
-        // TODO: AddPost, UpdatePost, DeletePost
+        void AddBlog(Blog blog);
+        void DeleteBlog(Blog blog);
+        void AddPost(Post post);
+        void DeletePost(Post post);
+        // TODO: UpdateBlog
+        // TODO: UpdatePost
     }
 }
