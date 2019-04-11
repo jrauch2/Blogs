@@ -42,6 +42,7 @@ namespace Blogs.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Moderate")]
         public IActionResult DeleteBlog(int id)
         {
             repository.DeleteBlog(repository.Blogs.FirstOrDefault(b => b.BlogId == id));
@@ -56,6 +57,7 @@ namespace Blogs.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public IActionResult AddPost(int id, Post post)
         {
             post.BlogId = id;
@@ -68,6 +70,7 @@ namespace Blogs.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Moderate")]
         public IActionResult DeletePost(int id)
         {
             Post post = repository.Posts.FirstOrDefault(p => p.PostId == id);
