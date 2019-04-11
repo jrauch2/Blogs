@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Blogs.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Blogs.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private IUserValidator<AppUser> userValidator;
